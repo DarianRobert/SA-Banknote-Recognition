@@ -19,6 +19,10 @@ To fulfill the comparative requirements of the Honours project, this system impl
 * **Color Histograms** (3D HSV color mass matched via Histogram Intersection)
 
 
+## My contribution
+
+I contributed to developing the team's banknote-recognition model. The pipeline is presented as shared work, with all four project authors credited above.
+
 ## Installation & Setup
 
 1. Ensure Python 3.10+ is installed on your system.
