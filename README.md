@@ -22,11 +22,16 @@ To fulfill the comparative requirements of the Honours project, this system impl
 ## Installation & Setup
 
 1. Ensure Python 3.10+ is installed on your system.
-2. Clone this repository to your local machine.
+2. Clone this repository and enter its directory:
+
+   ```bash
+   git clone https://github.com/DarianRobert/SA-Banknote-Recognition.git
+   cd SA-Banknote-Recognition
+   ```
 3. Install the required dependencies:
 
 ```bash
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 
 ```
 
@@ -43,7 +48,7 @@ scikit-learn
 The system requires a strict directory structure to automatically label and process the images. Ensure your repository is structured as follows before execution:
 
 ```text
-COMP702_BankNote_Recognition/
+SA-Banknote-Recognition/
 │
 ├── README.md                 
 ├── requirements.txt          
@@ -80,3 +85,12 @@ python main.py
 2. **Phase 3 Predictions:** The system will print individual prediction results for every image in the test set across the four distinct extraction architectures (SIFT, ORB, AKAZE, Hist).
 3. **Snapshot Generation:** A `report_snapshots/` directory will be automatically generated, saving visual evidence of the preprocessing and segmentation results for use in the final academic report.
 4. **Final Pipeline Configuration Report:** Upon completion, a comprehensive summary block will output the absolute best combination of Preprocessing, Segmentation, and Feature Extraction, alongside the final achieved accuracy.
+
+
+## Saved example
+
+A preprocessing snapshot from the supplied project:
+
+![CLAHE preprocessing of a South African R10 banknote](report_snapshots/Stage1_CLAHE_R10_1.jpg)
+
+[Original team repository](https://github.com/ArjunRamphal/COMP702Project) · [My portfolio](https://darianrobert.github.io/)
