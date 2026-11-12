@@ -14,8 +14,8 @@ To fulfill the comparative requirements of the Honours project, this system impl
 2. **Phase 2: Segmentation & Geometric Normalization:** Tests boundary isolation methods (Perspective Warping, Exact Masking, Padded Bounding Boxes, Adaptive Thresholding). 
 3. **Phase 3: Feature Extraction & Template Matching:** Evaluates the final isolated Regions of Interest (ROI) across four distinct classification architectures:
 * **SIFT** (Floating-point geometry matched via FLANN KD-Tree)
-* **ORB** (Binary geometry matched via BF Hamming + RANSAC)
-* **AKAZE** (Non-linear scale space matched via BF Hamming + RANSAC)
+* **ORB** (Binary descriptors matched via cross-checked BF Hamming)
+* **AKAZE** (Non-linear scale space matched via cross-checked BF Hamming)
 * **Color Histograms** (3D HSV color mass matched via Histogram Intersection)
 
 
@@ -39,10 +39,12 @@ python -m pip install -r requirements.txt
 
 ```
 
+OpenCV is kept on 4.x because this implementation uses the 4.x AKAZE API.
+
 ### Dependencies (`requirements.txt`)
 
 ```text
-opencv-python>=4.5.0
+opencv-python>=4.5,<5
 numpy
 scikit-learn
 ```
@@ -76,12 +78,17 @@ SA-Banknote-Recognition/
 
 ## Execution
 
-Run the system pipeline via the terminal from the root directory:
+Run the system pipeline via the terminal. Default paths are relative to `main.py`, so it can be launched from any directory:
 
 ```bash
 python main.py
-
+# Optional alternative paths
+python main.py --templates path/to/templates --tests path/to/images --snapshots path/to/output
 ```
+
+Images are loaded in a stable order. Missing or empty datasets report an error, and unreadable images are skipped with a warning. Run the small regression suite with `python -m unittest discover -s tests -v`.
+
+This is a comparative coursework study: the evaluation images are also used to select pipeline stages. The printed accuracy is a selection score on those images, not an independent held-out estimate. Feature matching uses FLANN with a ratio test or cross-checked BF Hamming; geometric RANSAC/MAGSAC verification is not implemented.
 
 ### Expected Output
 
